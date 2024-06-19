@@ -6,38 +6,57 @@ const path = require('path')
 const fs  = require('fs')
 require('dotenv').config()
 const ws = require('ws')
+const { error } = require('console')
 const wss = new ws.Server({server})
 const PORT = process.env.PORT || 8080
-
-const messages = ["Hello friends wellcome to group chat an web based app",
-     "Chat here with your friends",
-     "note - Its a simple group chat app not chat gpt 😅",
-     "note - Don't send here anything which can violate Community Standards. If your message goes against our Community Standards, we'll remove it.",
-     "This chat web application is developed with ❤️ by Me (Sankar) ..."
-    ]
-
+const createFileIfNotExist = require('./functions/createFileIfNotExists')
+createFileIfNotExist('./chatFiles/chat.txt')
+let isFileExists = true
+const messages = []
 wss.on('connection', (ws) => {
-    console.log("client connected")
+    // console.log("client connected")
     ws.on('message', (data) => {
-        console.log(data)
+        // console.log(data, "data")
+        const dataInfo = {msg: data, user: 'user'}
+        fs.appendFile(path.join(__dirname, 'chatFiles', 'chat.txt'), JSON.stringify(dataInfo) + '%$ank@r%', (err) => {
+            err && console.error(err)
+            // console.log('saved')
+        })
         messages.push(data)
         wss.clients.forEach(client => {
             client.send(data)
         });
     })
     ws.on('close', () => {
-        console.log("client disconnected")
+        // console.log("client disconnected")
     })
 })
 wss.on('close', () => {
-    console.log("client disconnected")
+    // console.log("client disconnected")
 })
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
 app.get('/', (req, res) => {
-    res.render('home',{messages: messages});
+    let chats
+    // console.log(messages)
+    if (!messages[0]) {
+    fs.readFile(path.join(__dirname, 'chatFiles', 'chat.txt'), 'utf-8', (err, data) => {
+    err && console.error(err)
+         chats = data.split('%$ank@r%')
+        //  console.log(chats)
+         chats.forEach(jsonObj => {
+            jsonObj != '' && messages.push(Buffer.from(JSON.parse(jsonObj).msg))
+         })
+         return res.render('home',{messages})
+    })
+} else {
+    res.render('home',{messages})
+}
+})
+app.get('/health', (req, res) => {
+    res.status(200).json("Ok")
 })
 server.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`)
