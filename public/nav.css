@@ -1,0 +1,57 @@
+.Navbar {
+    width: 100%;
+    max-height: 64px;
+    border-bottom: .1px solid rgba(128, 128, 128, 0.579);
+    display: grid;
+    position: relative;
+    grid-template-columns: minmax(max-content, 20%) 1fr;
+    align-items: center;
+}
+.nav-menu {
+    object-fit: contain;
+    height: 44px;
+    margin-left: 20%;
+    margin-right: 20px;
+}
+.SButton {
+    border-radius: 50%;
+    height: 30px;
+    justify-self: center;
+    filter: contrast(42%);
+}
+.SBox {
+    height: max-content;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    /* border: 1px solid red; */
+    text-overflow: ellipsis;
+}
+.SBox > h1 {
+    height: 100%;
+    width: 100%;
+    /* background: #ECF4FF; */
+    outline: none;
+    padding: 2px;
+    display: inline;
+    color: #1248;
+    font-size: 1.8rem;
+}
+.Searchbox {
+    height: 100%;
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+}
+@media (min-width: 400px) {
+    .Searchbox {
+        grid-template-columns: 5fr 1fr;
+    }
+}
+@media (min-width: 800px) {
+    .Searchbox {
+        grid-template-columns: 6fr 1fr;
+    }
+}

@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dynamic-vh: 100dvh;
+}
+::spelling-error {
+    text-decoration: none;
+}
+html {
+    height: 100%;
+}
+body {
+    background: mintcream;
+    color: #0f0f0f;
+    height: 100%;
+    width: 100dvw;
+    max-width: 100dvw;
+    max-height: var(--dynamic-vh);
+    display: grid;
+    grid-template-rows: 64px 1fr 50px;
+}
+.messageBox {
+    justify-self: center;
+    color: black;
+    /* border: 1px solid red; */
+    /* position: fixed; */
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    width: clamp(30px, 90%, 600px);
+}
+.messageBox {
+    height: calc(100% - 7px);
+}
+#textBox {
+    background: #ECF4FF;
+    outline: none;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    font-family: 'Times New Roman', Times, serif;
+}
+#textBox:focus {
+    outline: none;
+}
+.send-icon {
+    width: clamp(20px, 60%, 35px);
+}
+.chat {
+    padding: 2px;
+    width: 100%;
+    list-style: none;
+}
+.chat:hover .chats {
+    filter: invert(4%);
+}
+.chat-content {
+    color: rgb(83, 32, 32);
+}
+.chats {
+    cursor: pointer;
+    background: #f3fcff;
+    border-radius: 0px 20px 20px 20px;
+    padding: 10px;
+    box-shadow: 0px 0px 100px 0px #4c38ff53;
+    width: max-content;
+    max-width: clamp(40px,70%, 500px);
+    margin-left: 10px;
+    min-width: 40px;
+    overflow-wrap: break-word;
+    animation: 0.61s apear ease-out;
+}
+@keyframes apear {
+    from {
+        opacity: 0;
+        transform: translateX(-10%);
+    } to {
+        opacity: 1;
+        transform: translate(0%);
+    }
+}
+.messages {
+    display: flex;
+    padding-bottom: 14px;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    gap: 0px;
+    max-height: 100%;
+}
+.scroll-not-active::-webkit-scrollbar {
+    width: 4px;
+    background: transparent;
+}
+.scroll-active::-webkit-scrollbar {
+    width: 4px;
+    background: transparent;
+}
+.scroll-active::-webkit-scrollbar-thumb {
+    background: #0004;
+}

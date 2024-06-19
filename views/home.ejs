@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/nav.css">
+    <title>Chat Community</title>
+</head>
+<body>
+    <div class="Navbar">
+        <img src='/menu2.png' alt="Menu" class="nav-menu" />
+        <div class="Searchbox">
+            <div class="SBox">
+                <h1 class="label">Chat Community</h1>
+           </div>
+           <img src='/user.png' alt="Search" class="SButton" />
+        </div>
+    </div>
+ <ul class="messages scroll-not-active">
+        <% if (messages) { %>
+         <% messages.forEach(message => { %>
+        <div class="chat">
+            <div class="chats">
+          <li class="chat-content"><%= message %></li>
+          </div>
+        </div>
+         <% }) %>
+        <% } %>
+    </ul>
+    <form class="messageBox">
+        <input type="text" autocomplete="off" autofocus id="textBox">
+        <button type="submit" class="send-btn">
+            <img src="/send-icon.svg" alt="send" class="send-icon">
+            </button>
+    </form>
+    <script src="/script.js"></script>
+</body>
+</html>
