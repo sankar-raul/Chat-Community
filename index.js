@@ -6,7 +6,6 @@ const path = require('path')
 const fs  = require('fs')
 require('dotenv').config()
 const ws = require('ws')
-const { error } = require('console')
 const wss = new ws.Server({server})
 const PORT = process.env.PORT || 8080
 const createFileIfNotExist = require('./functions/createFileIfNotExists')
