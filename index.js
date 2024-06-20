@@ -50,7 +50,7 @@ wss.on('connection', (ws) => {
                  })
                 })
         } else if (cmd == "delete_previous_msg") {
-            messages.length > 5 && messages.pop()
+            messages.length > 6 && messages.pop()
         }
     }
         wss.clients.forEach(client => {
