@@ -76,7 +76,7 @@ app.get('/', (req, res) => {
     createFileIfNotExist('./chatFiles/chat.txt')
     if (!messages[0]) {
     fs.readFile(path.join(__dirname, 'chatFiles', 'chat.txt'), 'utf-8', (err, data) => {
-    err && console.error(err)
+    err && console.error(err, "dfkdfdfkjdf dfjdnfjdf ")
          chats = data.split('%$ank@r%')
         //  console.log(chats)
          chats.forEach(jsonObj => {
