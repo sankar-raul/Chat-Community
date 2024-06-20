@@ -20,8 +20,8 @@
     </div>
  <ul class="messages scroll-not-active">
         <% if (messages) { %>
-         <% messages.forEach(message => { %>
-        <div class="chat">
+         <% messages.forEach((message, index) => { %>
+        <div class="chat <%= index > 4 ? 'userTyped' : '' %>">
             <div class="chats">
           <li class="chat-content"><%= message %></li>
           </div>
