@@ -15,7 +15,7 @@ const handleChatCommand = (command) => {
             fs.readFile(path.join(__dirname, '..', 'chatFiles', 'chat.txt'), 'utf-8', (err, data) => {
                 err && console.error(err)
                 const msgsList = data.split('%$ank@r%')
-                if (msgsList.length > 6) {
+                if (msgsList.length > 7) {
                     msgsList.pop()
                     msgsList.pop()
                     msgsList.push('')
