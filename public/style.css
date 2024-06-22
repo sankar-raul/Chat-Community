@@ -10,6 +10,9 @@
 ::spelling-error {
     text-decoration: none;
 }
+::selection {
+    background: rgba(0, 255, 136, 0.4);
+}
 html {
     height: 100%;
 }
